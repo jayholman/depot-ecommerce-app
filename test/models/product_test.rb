@@ -22,12 +22,12 @@ class ProductTest < ActiveSupport::TestCase
 
     product.price = -42
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
+    assert_equal ["That's not a positive number..."],
       product.errors[:price]
 
     product.price = 0
     assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
+    assert_equal ["That's not a positive number..."],
       product.errors[:price]
 
     product.price = 1
@@ -57,7 +57,7 @@ class ProductTest < ActiveSupport::TestCase
     end
   end
 
-  test "proudct is not valid without a unique title - i18n" do
+  test "product is not valid without a unique title - i18n" do
     product = Product.new(
       title: products(:ruby).title,
       description: "yyy",
