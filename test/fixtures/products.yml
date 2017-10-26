@@ -18,3 +18,10 @@ ruby:
     Ruby is the fastest growing and most exciting dynamic language out there. If you need to get working programs delivered fast, you should add Ruby to your toolbox.
   price: 49.50
   image_url: ruby.png
+
+aurora:
+  title: Aurora
+  description:
+    Space is a cold scary place and it doesn't always work out for the people we send out there.
+  price: 23.99
+  image_url: aurora.png
