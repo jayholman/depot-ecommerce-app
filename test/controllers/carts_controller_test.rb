@@ -38,6 +38,29 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to cart_url(@cart)
   end
 
+  test "should add same item only once, then increase quantity" do
+    cart = carts(:mario)
+    product = products(:ruby)
+
+    multiple = 2
+    multiple.times { (cart.add_product product).save! }
+
+    line_item = cart.line_items.find_by product_id: product.id
+
+    assert_equal multiple, line_item.quantity
+  end
+
+  test "should two unique items, total items should be two" do
+    cart = carts(:mario)
+    product_one = products(:ruby)
+    product_two = products(:aurora)
+
+    (cart.add_product product_one).save!
+    (cart.add_product product_two).save!
+
+    assert_equal 2, cart.line_items.count
+  end
+
   test "should destroy cart" do
     post line_items_url, params: { product_id: products(:ruby).id }
     @cart = Cart.find(session[:cart_id])
