@@ -18,6 +18,9 @@
     <div id="columns">
       <div id="side">
         <span id="date"><%= DateTime.now.to_formatted_s(:long) %></span>
+        <div id="cart">
+          <%= render @cart if @cart %>
+        </div>
         <ul>
           <li>
             <a href="http://www...">Home</a>
