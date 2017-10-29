@@ -56,18 +56,22 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def decrement
+    @line_item = LineItem.find_by_id(params[:id])
+    @cart = @line_item.cart
+    @line_item = @line_item.decrement_quantity(@line_item)
+
+    respond_to do |format|
+      format.html { redirect_back fallback_location: store_index_url }
+      format.js { @current_item = @line_item }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    cart = @line.cart
-    if cart.id == session[:cart_id]
-      if @line_item.quantity < 2
-        @line_item.destroy if cart.id == session[:cart_id]
-      else
-        @line_item.quantity -= 1
-        @line_item.save!
-      end
-    end
+    @line_item.destroy if @line_item.cart.id == session[:cart_id]
     respond_to do |format|
       format.html { redirect_back fallback_location: store_index_url, notice: 'Item has been removed from your cart.' }
       format.json { head :no_content }
