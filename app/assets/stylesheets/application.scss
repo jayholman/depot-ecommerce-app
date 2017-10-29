@@ -31,6 +31,11 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     left: 0;
     width: 192px;
   }
+
+  #date {
+    font: small-caps 20px/20px "Times New Roman", serif;
+    float: right;
+  }
 }
 
 #notice {
@@ -59,6 +64,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
   #side {
     padding: 1em 2em;
     background: #141;
+    width: 400px;
 
     form, div {
       display: inline;
@@ -71,11 +77,13 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     #cart {
       font-size: smaller;
       color: white;
+      display: inline-block;
+      width: 400px;
 
       table {
         border-top: 1px dotted #595;
         border-bottom: 1px dotted #595;
-        margin-botton: 10px;
+        margin-bottom: 10px;
       }
     }
 
@@ -91,11 +99,6 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
           font-size: small;
         }
       }
-    }
-
-    #date {
-      color: #bfb;
-      font-size: small;
     }
   }
 }

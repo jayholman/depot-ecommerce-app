@@ -14,17 +14,15 @@
     <div id="banner">
       <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
       <span class="title"><%= @page_title %></span>
+      <span id="date"><%= DateTime.now.to_formatted_s(:long) %></span>
     </div>
     <div id="columns">
       <div id="side">
-        <span id="date"><%= DateTime.now.to_formatted_s(:long) %></span>
-        <div id="cart">
-          <% if @cart %>
-            <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-              <%= render @cart %>
-            <% end %>
+        <% if @cart %>
+          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+            <%= render @cart %>
           <% end %>
-        </div>
+        <% end %>
         <ul>
           <li>
             <a href="http://www...">Home</a>
