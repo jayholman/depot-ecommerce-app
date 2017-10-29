@@ -1,5 +1,6 @@
 if ($('#cart tr').length == 1) {
   $('#cart').show('blind', 1000);
+  $('#side').css({'width':'130px'}).animate({'width':'400px'}, 500);
 }
 
 $('#cart').html("<%=j render(@cart) %>");
