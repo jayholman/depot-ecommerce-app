@@ -1,0 +1,6 @@
+$('#cart tr').not('.total_line').remove();
+
+if ($('#cart tr').length == 1) {
+  $('#side').animate({'width':'130px'}, 1000);
+  $('#cart').hide("blind", 1000);
+}

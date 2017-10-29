@@ -1,7 +1,7 @@
 <% if line_item == @current_item %>
-<tr id="current_item">
+<tr id="current_item <%= line_item.id %>">
 <% else %>
-<tr>  
+<tr id="<%= line_item.id %>">
 <% end %>
   <td>
     <%= line_item.quantity %>&times;

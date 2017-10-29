@@ -59,9 +59,10 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    if @line_item.cart.id == session[:cart_id]
+    cart = @line.cart
+    if cart.id == session[:cart_id]
       if @line_item.quantity < 2
-        @line_item.destroy if @line_item.cart.id == session[:cart_id]
+        @line_item.destroy if cart.id == session[:cart_id]
       else
         @line_item.quantity -= 1
         @line_item.save!
