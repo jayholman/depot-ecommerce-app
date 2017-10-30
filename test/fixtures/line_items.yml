@@ -6,6 +6,5 @@ one:
   quantity: 1
 
 two:
-  product: two
-  cart: two
-  quantity: 1
+  product: ruby
+  order_id: one.id
