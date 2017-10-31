@@ -3,11 +3,10 @@ require 'test_helper'
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @order = orders(:one)
-  end
+    @order.payment_type = payment_types(:credit_card)
 
-  test "should get index" do
-    get orders_url
-    assert_response :success
+    @order_2 = orders(:two)
+    @order_2.payment_type = payment_types(:credit_card)
   end
 
   test "requires item in cart" do
@@ -25,15 +24,10 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create order" do
     assert_difference('Order.count') do
-      post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+      post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, payment_type_id: @order.payment_type_id } }
     end
 
     assert_redirected_to store_index_url
-  end
-
-  test "should show order" do
-    get order_url(@order)
-    assert_response :success
   end
 
   test "should get edit" do
@@ -42,7 +36,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update order" do
-    patch order_url(@order), params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+    patch order_url(@order), params: { order: { address: @order.address, email: @order.email, name: @order.name, payment_type_id: @order.payment_type_id } }
     assert_redirected_to order_url(@order)
   end
 
