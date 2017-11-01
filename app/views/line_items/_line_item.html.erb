@@ -12,7 +12,9 @@
   <td class="item_price">
     <%= number_to_currency(line_item.total_price) %>
   </td>
-  <td>
-    <%= button_to 'Remove Item', decrement_line_item_path(line_item), method: :post, remote: true %>
-  </td>
+  <% if @cart %>
+    <td>
+      <%= button_to 'Remove Item', decrement_line_item_path(line_item), method: :post, remote: true %>
+    </td>
+  <% end %>
 </tr>

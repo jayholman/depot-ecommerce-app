@@ -7,4 +7,6 @@ one:
 
 two:
   product: ruby
-  order_id: one.id
+  order: one
+  quantity: 1
+  price: product.price
